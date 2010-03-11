@@ -6,20 +6,35 @@
 	android:layout_height="fill_parent">
 	<TextView
 		android:id="@+id/Flash_text"
-		android:text="@string/hello"
 		android:layout_width="fill_parent"
-		android:layout_height="wrap_content" />
+		android:layout_height="wrap_content"
+		android:textColor="#FFFFFF"
+		android:background="#FF0000"
+		android:gravity="center"
+		android:enabled="false"
+		android:visibility="gone"
+		android:textStyle="bold" />
 	<RelativeLayout
 		android:id="@+id/RelativeLayout01"
 		android:layout_width="fill_parent"
 		android:layout_height="fill_parent">
 		<Button
 			android:id="@+id/Button_play"
-			android:text="PLAY!!!"
+			android:text="Play"
+			android:layout_width="fill_parent"
+			android:layout_height="200px"
+			android:layout_alignParentTop="true"
+			android:layout_centerHorizontal="true"
+			android:textSize="72px" />
+		<Button
+			android:id="@+id/Button_pause"
+			android:text="Pause"
+			android:layout_below="@id/Button_play"
 			android:layout_width="fill_parent"
 			android:layout_height="fill_parent"
-			android:layout_centerInParent="true" android:textSize="72px"/>
-		</RelativeLayout>
+			android:layout_centerHorizontal="true"
+			android:textSize="72px" />
+	</RelativeLayout>
 
 
 </LinearLayout>
