@@ -1,6 +1,5 @@
 package com.royvandewater.partybeat;
 
-import java.net.URL;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -16,18 +15,19 @@ public class Main extends Activity
 {
     // Menu constants
     final int MENU_SETTINGS = 0;
-    
+
     /* partybeat + prefix = partyfix
        the android sdk maps host machine to 10.0.2.2 in emulator since
        127.0.0.1 refers to the virtualized android device itself */
     public static String partyfix;
     public static TextView flash;
+    public static Partybeat partybeat;
 
     // Preferences
     public static final String HOSTNAME = "hostname";
     public static final String PREFERENCESNAME = "AndParty";
     private SharedPreferences preferences = null;
-    
+
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -36,46 +36,32 @@ public class Main extends Activity
         setContentView(R.layout.main);
 
         flash = (TextView)findViewById(R.id.Flash_text);
-        
+
         preferences = this.getSharedPreferences(PREFERENCESNAME, Context.MODE_PRIVATE);
         partyfix = preferences.getString(HOSTNAME, "http://10.0.2.2:8000/");
+        partybeat = new Partybeat(partyfix, flash);
 
         Button button_play = (Button)findViewById(R.id.Button_play);
         button_play.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v)
-            {
-                try {
-                    URL url = new URL(partyfix + "player/action/play/");
-                    url.openStream();
-                } catch (Exception e) {
-                    flash.setVisibility(View.VISIBLE);
-                    flash.setText(e.toString());
-                }
-            }
-        });
-        
-        Button button_pause = (Button)findViewById(R.id.Button_pause);
-        button_pause.setOnClickListener(new View.OnClickListener() {
             
             @Override
             public void onClick(View v)
             {
-                try {
-                    URL url = new URL(partyfix + "player/action/pause/");
-                    url.openStream();
-                } catch (Exception e) {
-                    flash.setVisibility(View.VISIBLE);
-                    flash.setText(e.toString());
-                }
-                
-                
+                partybeat.play();
             }
         });
 
-    }
+        Button button_pause = (Button)findViewById(R.id.Button_pause);
+        button_pause.setOnClickListener(new View.OnClickListener() {
 
+            @Override
+            public void onClick(View v)
+            {
+                partybeat.pause();
+            }
+        });
+        
+    }
     @Override
     protected void onRestart()
     {
@@ -116,8 +102,5 @@ public class Main extends Activity
         }
         return false;
     }
-    
-    
-    
 
 }
