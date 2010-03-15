@@ -14,27 +14,44 @@
 		android:enabled="false"
 		android:visibility="gone"
 		android:textStyle="bold" />
-	<RelativeLayout
-		android:id="@+id/RelativeLayout01"
+	<Button
+		android:id="@+id/Button_play"
+		android:text="Play"
 		android:layout_width="fill_parent"
-		android:layout_height="fill_parent">
+		android:layout_height="fill_parent"
+		android:layout_weight="1"
+		android:layout_alignParentTop="true"
+		android:layout_centerHorizontal="true"
+		android:textSize="72px" />
+	<Button
+		android:id="@+id/Button_pause"
+		android:text="Pause"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:layout_weight="1"
+		android:layout_centerHorizontal="true"
+		android:textSize="72px" />
+	<LinearLayout
+		android:orientation="horizontal"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:layout_weight="1">
 		<Button
-			android:id="@+id/Button_play"
-			android:text="Play"
-			android:layout_width="fill_parent"
-			android:layout_height="200px"
-			android:layout_alignParentTop="true"
-			android:layout_centerHorizontal="true"
-			android:textSize="72px" />
-		<Button
-			android:id="@+id/Button_pause"
-			android:text="Pause"
-			android:layout_below="@id/Button_play"
+			android:id="@+id/Button_previous"
+			android:text="Previous"
 			android:layout_width="fill_parent"
 			android:layout_height="fill_parent"
+			android:layout_weight="2"
 			android:layout_centerHorizontal="true"
-			android:textSize="72px" />
-	</RelativeLayout>
-
+			android:textSize="36px" />
+		<Button
+			android:id="@+id/Button_next"
+			android:text="Next"
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent"
+			android:layout_weight="2"
+			android:layout_centerHorizontal="true"
+			android:textSize="36px" />
+	</LinearLayout>
 
 </LinearLayout>
